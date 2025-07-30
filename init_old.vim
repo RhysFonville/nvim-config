@@ -17,6 +17,8 @@ set nobackup " Prevent possible problems with coc language servers
 set nowritebackup " ^
 set signcolumn=yes
 
+filetype plugin indent on
+
 call plug#begin()
 
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'} " HTML parser
@@ -29,37 +31,45 @@ Plug 'nvim-tree/nvim-web-devicons' " Icons for statusline
 Plug 'shellRaining/hlchunk.nvim' " Braces/chunk highligher. Indent lines.
 Plug 'MattesGroeger/vim-bookmarks' " Bookmark manager
 Plug 'stevearc/aerial.nvim' " Symbols outline
-Plug 'sakhnik/nvim-gdb' " GDB Debugger
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " Treesitter
 Plug 'eandrju/cellular-automaton.nvim' " make_it_rain or game_of_life (Useless (For funzies))
 Plug 'themercorp/themer.lua' " Theme manager
-Plug 'neoclide/coc.nvim', {'branch': 'master'}
-Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
+Plug 'neoclide/coc.nvim', {'branch': 'master'} " Completion/hints
+Plug 'https://gitlab.com/yorickpeterse/nvim-window.git' " Window changer (use ,)
 
 call plug#end()
 
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
 
-let g:coc_node_path = '/usr/bin/node'
+let g:have_nerd_font = 1
+
+let g:coc_node_path = '/opt/homebrew/bin/node'
 let g:coc_global_extensions = ['coc-clangd', 'coc-cmake', 'coc-git', 'coc-json', 'coc-sh']
 
 "let g:clang_library_path='/usr/lib/llvm-13/lib/libclang-13.so.1'
+
+let g:python3_host_prog = '/usr/bin/python3'
 
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-b> :AerialToggle<CR>
 
 nnoremap <F2> :noh<CR>
 
-"inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-"inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-"inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format, <C-e> to exit completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gr <Plug>(coc-references)
-inoremap <silent><expr> <c-@> coc#refresh()
-nmap <leader>rn <Plug>(coc-rename)
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 map <silent> , :lua require('nvim-window').pick()<CR>
 
