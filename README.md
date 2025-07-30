@@ -21,8 +21,4 @@ rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md
 fc-cache -fv</code></pre>
 
 <h2>Or run this on one line</h2>
-<code>sudo apt install npm git nodejs unzip &&
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip &&
-unzip Hack.zip -d ~/.local/share/fonts &&
-rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md &&
-fc-cache -fv</code>
+<code>sudo apt install npm git nodejs unzip && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip && unzip Hack.zip -d ~/.local/share/fonts && rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md && fc-cache -fv</code>
