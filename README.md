@@ -11,6 +11,7 @@
 
 <h2>Run to install:</h2>
 <code>sudo apt install npm git nodejs unzip</code>
+<code>brew install npm git nodejs unzip</code>
 
 <h1>Fonts</h1>
 
