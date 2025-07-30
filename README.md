@@ -1,20 +1,32 @@
-#DEPENDENCIES
+<h1>DEPENDENCIES</h1>
 
-npm
-git
-nodejs
-clangd
-unzip
-a nerd font (preferably Hack)
+<ul>
+<li>npm</li>
+<li>git</li>
+<li>nodejs</li>
+<li>clangd</li>
+<li>unzip</li>
+<li>a nerd font (preferably Hack)</li>
+</ul>
 
-sudo apt install npm git nodejs unzip
+<h2>Run to install:</h2>
+<code>sudo apt install npm git nodejs unzip</code>
 
-#FONTS
+<h1>FONTS</h1>
 
+<h2>Run to install:</h2>
+<pre><code>
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
 unzip Hack.zip -d ~/.local/share/fonts
 rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md
 fc-cache -fv
+</code></pre>
 
-One line-
-sudo apt install npm git nodejs unzip && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip && unzip Hack.zip -d ~/.local/share/fonts && rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md && fc-cache -fv
+<h2>Or run this on one line</h2>
+<code>
+sudo apt install npm git nodejs unzip &&
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip &&
+unzip Hack.zip -d ~/.local/share/fonts &&
+rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md &&
+fc-cache -fv
+</code>
