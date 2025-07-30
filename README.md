@@ -1,4 +1,4 @@
-<h1>DEPENDENCIES</h1>
+<h1>Dependencies</h1>
 
 <ul>
 <li>npm</li>
@@ -12,21 +12,17 @@
 <h2>Run to install:</h2>
 <code>sudo apt install npm git nodejs unzip</code>
 
-<h1>FONTS</h1>
+<h1>Fonts</h1>
 
 <h2>Run to install:</h2>
-<pre><code>
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
+<pre><code>wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
 unzip Hack.zip -d ~/.local/share/fonts
 rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md
-fc-cache -fv
-</code></pre>
+fc-cache -fv</code></pre>
 
 <h2>Or run this on one line</h2>
-<code>
-sudo apt install npm git nodejs unzip &&
+<code>sudo apt install npm git nodejs unzip &&
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip &&
 unzip Hack.zip -d ~/.local/share/fonts &&
 rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md &&
-fc-cache -fv
-</code>
+fc-cache -fv</code>
