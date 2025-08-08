@@ -88,6 +88,12 @@ return {
 			},
 		})
 
+		-- CMake
+		lspconfig["cmake"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		local x = vim.diagnostic.severity
 		local icons = require("config.icons")
 		local config = {

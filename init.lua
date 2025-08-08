@@ -7,9 +7,7 @@ vim.opt.sidescrolloff = 0
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
 vim.opt.expandtab = true
-vim.opt.smartindent = true
 vim.opt.smartindent = true
 
 vim.opt.ignorecase = true
@@ -63,7 +61,7 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR><C-w>l", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>sh", ":split<CR><c-w>j", { desc = "Split window horizontally" })
 
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
@@ -71,9 +69,11 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease wi
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
+vim.keymap.set("n", "<leader>ff", ":Files ", { desc = "Find file (fuzzy finder)" })
 
 vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
+
+vim.keymap.set("n", "<C-t>", ":%retab!<CR>", { desc = "Convert spaces to tabs" })
 
 -- Blink on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
