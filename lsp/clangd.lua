@@ -1,5 +1,12 @@
 return {
-	cmd = { 'clangd' },
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--clang-tidy",
+		"--completion-style=bundled",
+		"--cross-file-rename",
+		"--header-insertion=iwyu",
+	},
 	filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
 	root_markers = {
 		'.clangd',

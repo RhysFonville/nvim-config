@@ -7,7 +7,7 @@ vim.opt.sidescrolloff = 0
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.smartindent = true
 
 vim.opt.ignorecase = true
@@ -45,6 +45,8 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 
+vim.opt.hlsearch = true
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -69,11 +71,16 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease wi
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>ff", ":Files ", { desc = "Find file (fuzzy finder)" })
+vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "File picker" })
+vim.keymap.set("n", "<leader>fb", ":FzfLua buffers<CR>", { desc = "Buffer picker" })
+vim.keymap.set("n", "<leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep picker" })
+
+vim.keymap.set("n", "<leader>bh", ":bprev<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })
 
 vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
-vim.keymap.set("n", "<C-t>", ":%retab!<CR>", { desc = "Convert spaces to tabs" })
+vim.keymap.set("n", "<F2>", ":noh<CR>", { desc = "Clear highlighting" })
 
 -- Blink on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
