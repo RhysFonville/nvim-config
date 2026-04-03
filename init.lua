@@ -65,10 +65,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR><C-w>l", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", ":split<CR><c-w>j", { desc = "Split window horizontally" })
 
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-w>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-s>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-a>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-d>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "File picker" })
@@ -82,29 +82,38 @@ vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Ed
 
 vim.keymap.set("n", "<F2>", ":noh<CR>", { desc = "Clear highlighting" })
 
+vim.keymap.set('n', '/', '/\\v', { noremap = true })
+vim.keymap.set('v', '/', '/\\v', { noremap = true })
+vim.keymap.set('c', '%s/', '%smagic/', { noremap = true })
+vim.keymap.set('c', '\\>s/', '\\>smagic/', { noremap = true })
+vim.keymap.set('n', ':g/', ':g/\\v', { noremap = true })
+vim.keymap.set('n', ':g//', ':g//', { noremap = true })
+
 -- Blink on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = augroup,
 	callback = function()
 		vim.highlight.on_yank()
 	end,
 })
 
 -- Remember place
+local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
+vim.api.nvim_clear_autocmds({ group = lastplace })
 vim.api.nvim_create_autocmd("BufReadPost", {
-	group = augroup,
-	callback = function()
-		local mark = vim.api.nvim_buf_get_mark(0, '"')
-		local lcount = vim.api.nvim_buf_line_count(0)
-		if mark[1] > 0 and mark[1] == lcount then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
-		end
-	end,
+    group = lastplace,
+    pattern = { "*" },
+    desc = "remember last cursor place",
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end,
 })
 
 -- Better resize
 vim.api.nvim_create_autocmd("VimResized", {
-	group = augroup,
 	callback = function()
 		vim.cmd("tabdo wincmd =")
 	end,
@@ -112,7 +121,6 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- Recursive file search
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = ugroup,
 	callback = function()
 		local dir = vim.fn.expand('<afile>:p:h')
 		if vim.fn.isdirectory(dir) == 0 then
