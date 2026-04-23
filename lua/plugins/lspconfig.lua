@@ -71,45 +71,11 @@ return {
 					},
 				},
 			},
-		});
+		})
 		vim.lsp.enable("lua_ls")
 
 		-- CMake
 		vim.lsp.enable("cmake")
-
-		-- Matlab
-		vim.lsp.config("matlab_ls", {
-			capabilities = capabilities,
-			--on_attach = on_attach,
-			filetypes = { "matlab" },
-			single_file_support = true,
-			cmd = {
-				"/opt/homebrew/bin/node",
-				"/usr/local/MATLAB/MATLAB-language-server/out/index.js",
-				"--stdio",
-				"--matlabInstallPath", "/Applications/MATLAB_R2025b.app"
-			},
-			selector = "source.matlab",
-			settings = {
-				MATLAB = {
-					indexWorkspace = true,
-					installPath = "/Applications/MATLAB_R2025b.app",
-					matlabConnectionTiming = "onStart",
-					telemetry = false
-				}
-			}
-		});
-		vim.lsp.enable("matlab_ls")
-
-		-- Typst
-		vim.lsp.config("tinymist", {
-			settings = {
-				formatterMode = "typstyle",
-				exportPdf = "onType",
-				semanticTokens = "disable"
-			}
-		});
-		vim.lsp.enable("tinymist")
 
 		local x = vim.diagnostic.severity
 		local icons = require("config.icons")

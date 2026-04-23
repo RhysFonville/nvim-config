@@ -1,6 +1,6 @@
 return {
-    cmd = { 'cmake-language-server' },
-    filetypes = { "cmake" },
+    cmd = { "cmake-language-server" },
+	filetypes = {"cmake", "CMakeLists.txt"},
     init_options = {
         buildDirectory = "build"
     },

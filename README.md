@@ -10,16 +10,13 @@
 <li>fzf</li>
 <li>bat</li>
 <li>ripgrep</li>
-<li>the_silver_searcher</li>
 <li>perl</li>
 <li>universal-ctags</li>
-<li>luarocks</li>
-<li>tinymist</li>
 </ul>
 
 <h2>Run to install:</h2>
-<code>sudo apt install npm git nodejs unzip fzf bat ripgrep the_silver_searcher perl universal-ctags luarocks tinymist</code>
-<code>brew install npm git nodejs unzip fzf bat ripgrep the_silver_searcher perl universal-ctags luarocks tinymist</code>
+<code>sudo apt install npm git nodejs unzip fzf bat ripgrep perl universal-ctags </code>
+<code>brew install npm git nodejs unzip fzf bat ripgrep perl universal-ctags</code>
 
 <h1>Fonts</h1>
 
@@ -30,5 +27,5 @@ rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md
 fc-cache -fv</code></pre>
 
 <h2>Or run this on one line</h2>
-<code>sudo apt install npm git nodejs unzip fzf bat ripgrep the_silver_searcher perl universal-ctags luarocks tinymist && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip && unzip Hack.zip -d ~/.local/share/fonts && rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md && fc-cache -fv</code>
+<code>sudo apt install npm git nodejs unzip fzf bat ripgrep perl universal-ctags && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip && unzip Hack.zip -d ~/.local/share/fonts && rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md && fc-cache -fv</code>
 
