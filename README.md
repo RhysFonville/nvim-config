@@ -13,11 +13,8 @@
 <li>universal-ctags</li>
 </ul>
 
-<h2>Run to install:</h2>
+<h2>Run either to install:</h2>
 <code>sudo apt install npm git clangd unzip fzf bat perl universal-ctags</code>
-
-or
-
 <code>brew install npm git clangd unzip fzf bat perl universal-ctags</code>
 
 <h1>Fonts</h1>
