@@ -15,6 +15,7 @@
 
 <h2>Run either to install:</h2>
 <code>sudo apt install npm git clangd unzip fzf bat perl universal-ctags</code>
+
 <code>brew install npm git clangd unzip fzf bat perl universal-ctags</code>
 
 <h1>Fonts</h1>
