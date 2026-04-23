@@ -16,16 +16,16 @@
 <h2>Run to install:</h2>
 <code>sudo apt install npm git clangd unzip fzf bat perl universal-ctags</code>
 
+or
+
 <code>brew install npm git clangd unzip fzf bat perl universal-ctags</code>
 
 <h1>Fonts</h1>
 
 <h2>Run to install:</h2>
-<pre><code>
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
+<pre><code>wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip
 unzip Hack.zip -d ~/.local/share/fonts
 rm ~/.local/share/fonts/LICENSE.md ~/.local/share/fonts/README.md
 fc-cache -fv
-rm Hack.zip
-</code></pre>
+rm Hack.zip</code></pre>
 
