@@ -32,7 +32,7 @@ return {
 		sections = {
 			lualine_a = {"mode"},
 			lualine_b = {"branch", "diff", "diagnostics"},
-			lualine_c = {"filename", "filetype", "filesize"},
+			lualine_c = {"filename", "filetype"},
 			lualine_x = {"selectioncount", "searchcount"},
 			lualine_y = {"lsp_status", "progress"},
 			lualine_z = {"location"}

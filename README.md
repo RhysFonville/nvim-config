@@ -11,12 +11,14 @@
 <li>bat</li>
 <li>perl</li>
 <li>universal-ctags</li>
+<li>latexmk</li>
+<li>texlive-collection-latexrecommended</li> (Recommended)
 </ul>
 
 <h2>Run either to install:</h2>
-<code>sudo apt install npm git clangd unzip fzf bat perl universal-ctags</code>
+<code>sudo apt install npm git clangd unzip fzf bat perl universal-ctags latexmk texlive-collection-latexrecommended</code>
 
-<code>brew install npm git clangd unzip fzf bat perl universal-ctags</code>
+<code>brew install npm git clangd unzip fzf bat perl universal-ctags latexm</code>
 
 <h1>Fonts</h1>
 

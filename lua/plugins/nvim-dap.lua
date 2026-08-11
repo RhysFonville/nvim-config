@@ -2,22 +2,39 @@ return {
 	"mfussenegger/nvim-dap",
 	lazy = true,
 	config = function()
-		local dap = require('dap')
+		local dap = require("dap")
 
-		dap.adapters.lldb = {
-			type = 'executable',
-			command = '/Applications/Xcode.app/Contents/Developer/usr/bin/lldb-dap',
-			name = 'lldb'
+		--[[dap.adapters.lldb = {
+			type = "executable",
+			command = "lldb",
+			name = "lldb"
+		}]]
+		dap.adapters.gdb = {
+			type = "executable",
+			command = "gdb",
+			args = { "--interpreter=dap", "--quiet" }
 		}
 		dap.configurations.cpp = {
 			{
-				name = 'launch',
-				type = 'lldb',
-				request = 'launch',
+				name = "Launch",
+				type = "gdb",
+				request = "launch",
 				program = function()
 					return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
 				end,
-				cwd = '${workspaceFolder}',
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {},
+				stopAtBeginningOfMainSubprogram = false
+			},
+			--[[{
+				name = "launch",
+				type = "lldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
 				args = {},
 
@@ -33,7 +50,7 @@ return {
 				-- But you should be aware of the implications:
 				-- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
 				-- runInTerminal = false,
-			},
+			},]]
 		}
 		dap.configurations.c = dap.configurations.cpp
 

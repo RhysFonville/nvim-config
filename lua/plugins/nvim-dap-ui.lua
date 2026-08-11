@@ -5,6 +5,7 @@ return {
 		"nvim-neotest/nvim-nio",
 	},
 	config = function()
+		--[[
 		require("dapui").setup()
 		local dap, dapui = require("dap"), require("dapui")
 
@@ -20,6 +21,7 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
+		]]
 	end,
 }
 

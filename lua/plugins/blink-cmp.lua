@@ -5,6 +5,14 @@ return {
 	event = { "InsertEnter", "CmdlineEnter" },
 	opts = {
 		signature = { enabled = true },
+		sources = {
+			default = { "lsp", "path", "snippets" }, -- no "buffer"
+		},
+		completion = {
+			accept = {
+				auto_brackets = { enabled = false, }
+			},
+		},
 		keymap = {
 			preset = "none",
 			["<S-Tab>"] = { "select_prev", "fallback" },

@@ -42,20 +42,53 @@ return {
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- C/C++
+		vim.lsp.config("clangd", {
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=bundled",
+				"--query-driver=/usr/bin/g++",
+				"--log=verbose",
+				"--header-insertion=never",
+			},
+			filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+			root_markers = {
+				".clangd",
+				".clang-tidy",
+				".clang-format",
+				"compile_commands.json",
+				"compile_flags.txt",
+				"configure.ac", -- AutoTools
+				".git",
+			},
+			capabilities = {
+				textDocument = {
+					completion = {
+						editsNearCursor = true,
+					},
+				},
+				offsetEncoding = { "utf-8", "utf-16" },
+			},
+			on_init = function(client, init_result)
+				if init_result.offsetEncoding then
+					client.offset_encoding = init_result.offsetEncoding
+				end
+			end,
+		})
 		vim.lsp.enable("clangd")
 
 		-- Bash
-		vim.lsp.config("bashls", {capabilities = capabilities, on_attach = on_attach});
+		vim.lsp.config("bashls", {capabilities = capabilities});
 		vim.lsp.enable("bashls")
 
 		-- Python
-		vim.lsp.config("pyright", {capabilities = capabilities, on_attach = on_attach});
+		vim.lsp.config("pyright", {capabilities = capabilities});
 		vim.lsp.enable("pyright")
 
 		-- Lua
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 			settings = { -- custom settings for lua
 				Lua = {
 					-- make the language server recognize "vim" global
@@ -75,7 +108,22 @@ return {
 		vim.lsp.enable("lua_ls")
 
 		-- CMake
+		vim.lsp.config("cmake", {
+			cmd = { "cmake-language-server" },
+			filetypes = {"cmake"},
+			init_options = {
+				buildDirectory = "build"
+			},
+			root_markers = { "CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake" }
+		})
 		vim.lsp.enable("cmake")
+
+		-- LaTeX, Markdown
+		vim.lsp.config("ltex_plus", {
+			capabilities = capabilities,
+			filetypes = { "tex", "typst" }
+		});
+		vim.lsp.enable("ltex_plus")
 
 		local x = vim.diagnostic.severity
 		local icons = require("config.icons")

@@ -9,6 +9,8 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.cinoptions = "Ls,l1,g0,N-s,E-s,(0,W4"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -82,10 +84,10 @@ vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Ed
 
 vim.keymap.set("n", "<F2>", ":noh<CR>", { desc = "Clear highlighting" })
 
+-- Use regex in search
+-- 'smagic/' to use regex in search/replace
 vim.keymap.set('n', '/', '/\\v', { noremap = true })
 vim.keymap.set('v', '/', '/\\v', { noremap = true })
-vim.keymap.set('c', '%s/', '%smagic/', { noremap = true })
-vim.keymap.set('c', '\\>s/', '\\>smagic/', { noremap = true })
 vim.keymap.set('n', ':g/', ':g/\\v', { noremap = true })
 vim.keymap.set('n', ':g//', ':g//', { noremap = true })
 
@@ -128,6 +130,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 	end,
 })
+
+-- Auto-format
+--[[vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
+  callback = function()
+    require("conform").format({ async = false })
+  end,
+})]]
 
 require("config.lazy")
 require("config.terminal")
